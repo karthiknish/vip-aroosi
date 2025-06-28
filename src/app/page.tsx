@@ -1,9 +1,4 @@
-import dynamic from "next/dynamic";
-import type { ComponentType } from "react";
-
-const ContactForm = dynamic(() => import("../components/ContactForm"), {
-  ssr: false,
-}) as ComponentType<{ defaultSubject?: string }>;
+import ContactForm from "../components/ContactForm";
 
 export default function Home() {
   return (
