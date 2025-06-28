@@ -106,6 +106,78 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Powered By Aroosi */}
+      <section className="py-20 px-4 bg-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/images/aroosi-bg.jpg')] bg-cover bg-center opacity-5 pointer-events-none" />
+        <div className="relative max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="space-y-6">
+            <h2 className="text-4xl font-bold text-primary-dark font-serif">
+              Powered by <span className="text-primary">Aroosi</span>
+            </h2>
+            <p className="text-lg leading-relaxed text-neutral">
+              VIP Aroosi is an exclusive concierge service built on the proven
+              expertise of <strong>Aroosi</strong> – the number&nbsp;1 Afghan
+              matrimony platform trusted by thousands worldwide. Our
+              award-winning technology, rigorous profile verification, and
+              culture-focused matchmaking have united countless couples in
+              meaningful marriages.
+            </p>
+            <ul className="space-y-3 list-disc list-inside">
+              <li>20+ years of community matchmaking experience</li>
+              <li>Global network of 50,000+ vetted Afghan professionals</li>
+              <li>Dedicated VIP consultants for white-glove service</li>
+              <li>Absolute confidentiality & orchestrated introductions</li>
+            </ul>
+          </div>
+          <div className="w-full h-64 md:h-full rounded-lg overflow-hidden shadow-lg">
+            <img
+              src="/images/aroosi-graph.png"
+              alt="Aroosi success graph"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="py-20 px-4 bg-base-light">
+        <div className="max-w-5xl mx-auto space-y-12 text-center">
+          <h2 className="text-3xl font-bold text-primary-dark font-serif">
+            Your VIP Journey
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Consultation",
+                desc: "Our senior consultant learns about your values, lifestyle & partner expectations in a private call.",
+                icon: "💬",
+              },
+              {
+                title: "Personalised Search",
+                desc: "Leveraging Aroosi's extensive database & elite network, we shortlist truly compatible profiles.",
+                icon: "🔍",
+              },
+              {
+                title: "Curated Introductions",
+                desc: "Meet hand-selected matches at your pace – every interaction arranged with full discretion.",
+                icon: "🤝",
+              },
+            ].map((s, idx) => (
+              <div
+                key={s.title}
+                className="p-8 border border-base-dark bg-white rounded-lg shadow-sm flex flex-col items-center gap-4"
+              >
+                <span className="text-4xl">{s.icon}</span>
+                <h3 className="text-xl font-semibold text-primary-dark">
+                  {s.title}
+                </h3>
+                <p className="text-neutral text-sm leading-relaxed">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* FAQ */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-3xl mx-auto space-y-8" id="faq">
