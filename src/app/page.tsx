@@ -1,3 +1,10 @@
+import dynamic from "next/dynamic";
+import type { ComponentType } from "react";
+
+const ContactForm = dynamic(() => import("../components/ContactForm"), {
+  ssr: false,
+}) as ComponentType<{ defaultSubject?: string }>;
+
 export default function Home() {
   return (
     <main className="w-full overflow-x-hidden text-gray-800 bg-base-light">
@@ -125,42 +132,9 @@ export default function Home() {
             Submit your details for a free VIP consultation. Our consultant will
             call you shortly.
           </p>
-          <form
-            action="https://formspree.io/f/your-form-id"
-            method="POST"
-            className="space-y-4 text-left"
-          >
-            <div className="flex flex-col gap-1">
-              <label htmlFor="name" className="text-sm font-medium">
-                Name
-              </label>
-              <input
-                id="name"
-                name="name"
-                required
-                className="w-full px-3 py-2 rounded-md text-gray-800"
-              />
-            </div>
-            <div className="flex flex-col gap-1">
-              <label htmlFor="phone" className="text-sm font-medium">
-                Phone
-              </label>
-              <input
-                id="phone"
-                name="phone"
-                required
-                className="w-full px-3 py-2 rounded-md text-gray-800"
-              />
-            </div>
-            <button
-              type="submit"
-              className="w-full bg-white text-primary font-semibold py-2 rounded-md hover:bg-base-dark transition-colors"
-            >
-              Submit
-            </button>
-          </form>
+          <ContactForm defaultSubject="VIP Aroosi Enquiry" />
         </div>
       </section>
     </main>
   );
-} 
+}
