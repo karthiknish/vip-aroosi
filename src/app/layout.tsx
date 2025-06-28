@@ -64,7 +64,25 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         />
         <meta name="twitter:image" content="/images/og-vip-aroosi.jpg" />
       </head>
-      <body className={`${nunito.variable}`}>{children}</body>
+      <body className={`${nunito.variable}`}>
+        {/* Site Nav */}
+        <header className="w-full bg-primary-dark shadow-sm fixed top-0 left-0 z-50 py-4">
+          <div className="max-w-6xl mx-auto text-center">
+            <a
+              href="/"
+              className="text-2xl md:text-3xl font-serif font-bold text-white tracking-wide"
+            >
+              Aroosi
+              <span className="text-white subscript text-sm font-sans">
+                VIP
+              </span>
+            </a>
+          </div>
+        </header>
+
+        {/* Offset for fixed header to avoid overlap */}
+        <div className="pt-14">{children}</div>
+      </body>
     </html>
   );
 } 
