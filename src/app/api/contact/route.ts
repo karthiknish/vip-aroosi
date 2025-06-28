@@ -12,7 +12,14 @@ export async function POST(req: NextRequest) {
       source: "vip-aroosi", // extra tag field understood by Aroosi backend (ignored if unknown)
     };
 
-    const res = await fetch(AROOSI_CONTACT_URL, {
+    if (!AROOSI_CONTACT_URL) {
+      return NextResponse.json(
+        { error: "Contact endpoint not configured" },
+        { status: 500 }
+      );
+    }
+
+    const res = await fetch(AROOSI_CONTACT_URL as string, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

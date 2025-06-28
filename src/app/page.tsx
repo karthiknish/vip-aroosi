@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import ContactForm from "../components/ContactForm";
 
 export default function Home() {
@@ -6,20 +9,38 @@ export default function Home() {
       {/* Hero */}
       <section className="relative bg-[url('/images/hero-bg.jpg')] bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center text-center min-h-[60vh] px-4 py-20">
         <div className="backdrop-brightness-90 backdrop-blur-sm inset-0 absolute" />
-        <div className="relative max-w-3xl space-y-6 z-10">
-          <h1 className="text-4xl md:text-5xl font-bold text-primary-dark">
+        <motion.div
+          className="relative max-w-3xl space-y-6 z-10"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <motion.h1
+            className="text-4xl md:text-5xl font-bold text-primary-dark"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+          >
             No. 1 Matchmaking Service for Elites
-          </h1>
-          <p className="text-lg md:text-xl text-neutral-light">
+          </motion.h1>
+          <motion.p
+            className="text-lg md:text-xl text-neutral-light"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.35, duration: 0.6 }}
+          >
             5× higher success rate · Assured meetings · Top consultants
-          </p>
-          <a
+          </motion.p>
+          <motion.a
             href="#enquiry"
             className="inline-block bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-md text-lg font-medium transition-colors"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.6 }}
           >
             Get a Free Consultation
-          </a>
-        </div>
+          </motion.a>
+        </motion.div>
       </section>
 
       {/* Advantage Cards */}
@@ -29,16 +50,20 @@ export default function Home() {
             { value: "20+", label: "Years Expertise" },
             { value: "50,000+", label: "Happy VIPs" },
             { value: "100%", label: "Privacy" },
-          ].map((item) => (
-            <div
+          ].map((item, idx) => (
+            <motion.div
               key={item.label}
               className="p-8 rounded-lg border border-base-dark bg-base"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
             >
               <span className="text-3xl md:text-4xl font-bold text-primary">
                 {item.value}
               </span>
               <p className="mt-2 font-medium">{item.label}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>
