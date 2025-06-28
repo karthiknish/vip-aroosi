@@ -27,6 +27,42 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap"
           rel="stylesheet"
         />
+
+        {/* SEO & Social Meta */}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+          name="description"
+          content="VIP Aroosi – the premier Afghan matchmaking concierge for elites worldwide."
+        />
+        <meta
+          name="keywords"
+          content="Afghan matchmaking, VIP matrimony, elite dating, concierge marriage service"
+        />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:title"
+          content="VIP Aroosi | Elite Afghan Matchmaking"
+        />
+        <meta
+          property="og:description"
+          content="Experience white-glove matrimonial concierge with the global leader in Afghan matchmaking."
+        />
+        <meta property="og:image" content="/images/og-vip-aroosi.jpg" />
+        <meta property="og:url" content="https://vip.aroosi.com" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="VIP Aroosi | Elite Afghan Matchmaking"
+        />
+        <meta
+          name="twitter:description"
+          content="White-glove matrimonial concierge built on Aroosi's award-winning platform."
+        />
+        <meta name="twitter:image" content="/images/og-vip-aroosi.jpg" />
       </head>
       <body className={`${nunito.variable}`}>{children}</body>
     </html>

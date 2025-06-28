@@ -21,6 +21,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
+            style={{ lineHeight: "1.4" }}
           >
             No. 1 Matchmaking Service for Elites
           </motion.h1>
@@ -120,7 +121,7 @@ export default function Home() {
 
       {/* Powered By Aroosi */}
       <section className="py-20 px-4 bg-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/images/aroosi-bg.jpg')] bg-cover bg-center opacity-5 pointer-events-none" />
+        <div className="absolute inset-0 bg-[url('https://thedigitalglobetrotter.com/wp-content/uploads/2017/09/wp-1505474107833.-1024x576.jpg')] bg-cover bg-center opacity-10 pointer-events-none" />
         <div className="relative max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <h2 className="text-4xl font-bold text-primary-dark font-serif">
@@ -192,6 +193,50 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* The Aroosi Edge */}
+      <section className="py-20 px-4 bg-base relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://images.squarespace-cdn.com/content/v1/5c2db4029772aebeba129860/1718695569777-7JMTP88KEOHZTA9BLN1X/JBX53235.jpg')] bg-cover bg-center opacity-10 pointer-events-none" />
+        <div className="relative max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <motion.div
+            className="space-y-6"
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <h2 className="text-4xl font-bold text-primary-dark font-serif">
+              The <span className="text-primary">Aroosi Edge</span>
+            </h2>
+            <p className="text-lg leading-relaxed text-neutral">
+              Beyond technology, VIP Aroosi blends <strong>heritage</strong>,
+              <strong> expertise</strong>, and <strong>human insight</strong>
+              to create unions destined to thrive. Here's why discerning singles
+              choose us.
+            </p>
+            <ul className="space-y-3 list-disc list-inside">
+              <li>Hand-curated matches reviewed by senior consultants</li>
+              <li>In-depth cultural & family alignment assessments</li>
+              <li>Exclusive invites to private Aroosi networking salons</li>
+              <li>Post-match relationship coaching & support</li>
+            </ul>
+          </motion.div>
+
+          <motion.div
+            className="w-full h-64 md:h-full rounded-lg overflow-hidden shadow-lg"
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+          >
+            <img
+              src="https://images.squarespace-cdn.com/content/v1/5c2db4029772aebeba129860/1718695569777-7JMTP88KEOHZTA9BLN1X/JBX53235.jpg"
+              alt="VIP Aroosi consultancy"
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
         </div>
       </section>
 
