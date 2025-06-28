@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <main className="w-full overflow-x-hidden text-gray-800 bg-base-light">
       {/* Hero */}
-      <section className="relative bg-[url('/images/hero-bg.jpg')] bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center text-center min-h-[60vh] px-4 py-20">
+      <section className="relative bg-[url('https://images.saymedia-content.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cq_auto:eco%2Cw_1200/MjA2MTE0NDEyNDMwMzY5OTgx/brighter-side-of-afghanistan.png')] bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center text-center min-h-[60vh] px-4 py-20">
         <div className="backdrop-brightness-90 backdrop-blur-sm inset-0 absolute" />
         <motion.div
           className="relative max-w-3xl space-y-6 z-10"
