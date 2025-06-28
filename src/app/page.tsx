@@ -49,9 +49,9 @@ export default function Home() {
       <section className="py-16 px-4 bg-white">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
           {[
-            { value: "20+", label: "Years Expertise" },
-            { value: "50,000+", label: "Happy VIPs" },
-            { value: "100%", label: "Privacy" },
+            { value: "98%", label: "Match Success" },
+            { value: "70+", label: "Countries Served" },
+            { value: "24h", label: "Concierge Response" },
           ].map((item, idx) => (
             <motion.div
               key={item.label}
@@ -122,6 +122,8 @@ export default function Home() {
       {/* Powered By Aroosi */}
       <section className="py-20 px-4 bg-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://thedigitalglobetrotter.com/wp-content/uploads/2017/09/wp-1505474107833.-1024x576.jpg')] bg-cover bg-center opacity-10 pointer-events-none" />
+        {/* Decorative purple circle */}
+        <div className="pointer-events-none absolute -top-32 -right-32 w-96 h-96 bg-purple-300 opacity-30 blur-3xl rounded-full" />
         <div className="relative max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <h2 className="text-4xl font-bold text-primary-dark font-serif">
@@ -199,6 +201,8 @@ export default function Home() {
       {/* The Aroosi Edge */}
       <section className="py-20 px-4 bg-base relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.squarespace-cdn.com/content/v1/5c2db4029772aebeba129860/1718695569777-7JMTP88KEOHZTA9BLN1X/JBX53235.jpg')] bg-cover bg-center opacity-10 pointer-events-none" />
+        {/* Decorative purple circle */}
+        <div className="pointer-events-none absolute -bottom-32 -left-32 w-96 h-96 bg-purple-300 opacity-30 blur-3xl rounded-full" />
         <div className="relative max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <motion.div
             className="space-y-6"

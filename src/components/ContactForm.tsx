@@ -12,13 +12,24 @@ export default function ContactForm({ defaultSubject = "VIP Aroosi Enquiry" }) {
     setStatus("submitting");
     setError(null);
     const formData = new FormData(e.currentTarget);
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+    let message =
+      (formData.get("message") as string) || "Interested in VIP Aroosi";
+
+    // Basic email validation
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+      setStatus("error");
+      setError("Please enter a valid email address.");
+      return;
+    }
+
     const payload = {
-      name: formData.get("name") as string,
-      email: formData.get("email") as string,
+      name,
+      email,
       subject: defaultSubject,
-      message:
-        (formData.get("message") as string) ||
-        `Phone: ${formData.get("phone") as string}`,
+      message,
     };
     try {
       const res = await fetch("/api/contact", {
@@ -57,17 +68,6 @@ export default function ContactForm({ defaultSubject = "VIP Aroosi Enquiry" }) {
           name="email"
           type="email"
           required
-          className="w-full px-3 py-2 rounded-md text-gray-800"
-        />
-      </div>
-      {/* optional phone/message */}
-      <div className="flex flex-col gap-1">
-        <label htmlFor="phone" className="text-sm font-medium">
-          Phone
-        </label>
-        <input
-          id="phone"
-          name="phone"
           className="w-full px-3 py-2 rounded-md text-gray-800"
         />
       </div>
