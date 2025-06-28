@@ -8,7 +8,8 @@ export default function Home() {
     <main className="w-full overflow-x-hidden text-gray-800 bg-base-light">
       {/* Hero */}
       <section className="relative bg-[url('https://images.saymedia-content.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cq_auto:eco%2Cw_1200/MjA2MTE0NDEyNDMwMzY5OTgx/brighter-side-of-afghanistan.png')] bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center text-center min-h-[60vh] px-4 py-20">
-        <div className="backdrop-brightness-90 backdrop-blur-sm inset-0 absolute" />
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 backdrop-brightness-75 backdrop-blur-sm" />
         <motion.div
           className="relative max-w-3xl space-y-6 z-10"
           initial={{ opacity: 0, y: 40 }}
@@ -16,7 +17,7 @@ export default function Home() {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <motion.h1
-            className="text-4xl md:text-5xl font-bold text-primary-dark"
+            className="text-4xl md:text-5xl font-bold text-primary-dark "
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
@@ -24,7 +25,7 @@ export default function Home() {
             No. 1 Matchmaking Service for Elites
           </motion.h1>
           <motion.p
-            className="text-lg md:text-xl text-neutral-light"
+            className="text-lg md:text-xl text-white"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35, duration: 0.6 }}
@@ -53,15 +54,21 @@ export default function Home() {
           ].map((item, idx) => (
             <motion.div
               key={item.label}
-              className="p-8 rounded-lg border border-base-dark bg-base"
+              className="p-8 rounded-lg border border-base-dark bg-base cursor-pointer"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.05 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
             >
-              <span className="text-3xl md:text-4xl font-bold text-primary">
+              <motion.span
+                className="text-3xl md:text-4xl font-bold text-primary block"
+                initial={{ scale: 0.8, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 0.2 + idx * 0.1, type: "spring" }}
+              >
                 {item.value}
-              </span>
+              </motion.span>
               <p className="mt-2 font-medium">{item.label}</p>
             </motion.div>
           ))}
@@ -91,16 +98,21 @@ export default function Home() {
                 quote:
                   "Truly grateful for the professionalism and discretion throughout.",
               },
-            ].map((s) => (
-              <blockquote
+            ].map((s, idx) => (
+              <motion.blockquote
                 key={s.name}
-                className="p-6 bg-white rounded-lg shadow-sm border border-base-dark flex flex-col gap-4"
+                className="p-6 bg-white rounded-lg shadow-sm border border-base-dark flex flex-col gap-4 cursor-pointer"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ scale: 1.02 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
               >
                 <p className="italic text-sm">“{s.quote}”</p>
                 <span className="font-semibold text-primary-dark">
                   {s.name}
                 </span>
-              </blockquote>
+              </motion.blockquote>
             ))}
           </div>
         </div>
@@ -131,7 +143,7 @@ export default function Home() {
           </div>
           <div className="w-full h-64 md:h-full rounded-lg overflow-hidden shadow-lg">
             <img
-              src="/images/aroosi-graph.png"
+              src="https://thedigitalglobetrotter.com/wp-content/uploads/2017/09/wp-1505474107833.-1024x576.jpg"
               alt="Aroosi success graph"
               className="w-full h-full object-cover"
             />
@@ -163,16 +175,21 @@ export default function Home() {
                 icon: "🤝",
               },
             ].map((s, idx) => (
-              <div
+              <motion.div
                 key={s.title}
-                className="p-8 border border-base-dark bg-white rounded-lg shadow-sm flex flex-col items-center gap-4"
+                className="p-8 border border-base-dark bg-white rounded-lg shadow-sm flex flex-col items-center gap-4 cursor-pointer"
+                whileHover={{ scale: 1.05 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
               >
                 <span className="text-4xl">{s.icon}</span>
                 <h3 className="text-xl font-semibold text-primary-dark">
                   {s.title}
                 </h3>
                 <p className="text-neutral text-sm leading-relaxed">{s.desc}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
