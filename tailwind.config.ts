@@ -37,8 +37,9 @@ export default {
       fontFamily: {
         sans: ["var(--font-family-sans)", "sans-serif"],
         serif: ["var(--font-serif)", "serif"],
+        lora: ["var(--font-family-serif)"],
       },
     },
   },
   plugins: [animate],
-} satisfies Config; 
+} satisfies Config;

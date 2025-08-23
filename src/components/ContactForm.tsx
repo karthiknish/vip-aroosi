@@ -1,6 +1,7 @@
 "use client";
 import { useRef, useState } from "react";
 import { toast } from "react-hot-toast";
+import { motion } from "framer-motion";
 // We'll submit via the API route instead of directly writing to Firestore
 
 export default function ContactForm() {
@@ -73,54 +74,107 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 text-left">
-      <div className="flex flex-col gap-1">
-        <label htmlFor="name" className="text-sm font-medium">
+    <motion.form 
+      onSubmit={handleSubmit} 
+      className="space-y-6 text-left bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/20 shadow-2xl"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0 }}
+    >
+      <div className="flex flex-col gap-2">
+        <motion.label 
+          htmlFor="name" 
+          className="text-sm font-medium text-white/90"
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
+        >
           Name
-        </label>
-        <input
+        </motion.label>
+        <motion.input
           id="name"
           name="name"
           required
-          className="w-full px-3 py-2 rounded-md text-gray-800"
+          className="w-full px-4 py-3 rounded-lg text-gray-800 bg-white/95 backdrop-blur-sm border border-white/30 focus:border-white/60 focus:ring-2 focus:ring-white/30 focus:outline-none transition-all duration-300 delay-0 shadow-lg hover:shadow-xl"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.2 }}
+          whileFocus={{ scale: 1.02 }}
         />
       </div>
-      <div className="flex flex-col gap-1">
-        <label htmlFor="email" className="text-sm font-medium">
+      <div className="flex flex-col gap-2">
+        <motion.label 
+          htmlFor="email" 
+          className="text-sm font-medium text-white/90"
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.4, delay: 0.3 }}
+        >
           Email
-        </label>
-        <input
+        </motion.label>
+        <motion.input
           id="email"
           name="email"
           type="email"
           required
-          className="w-full px-3 py-2 rounded-md text-gray-800"
+          className="w-full px-4 py-3 rounded-lg text-gray-800 bg-white/95 backdrop-blur-sm border border-white/30 focus:border-white/60 focus:ring-2 focus:ring-white/30 focus:outline-none transition-all duration-300 delay-0 shadow-lg hover:shadow-xl"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.4 }}
+          whileFocus={{ scale: 1.02 }}
         />
       </div>
-      <div className="flex flex-col gap-1">
-        <label htmlFor="message" className="text-sm font-medium">
+      <div className="flex flex-col gap-2">
+        <motion.label 
+          htmlFor="message" 
+          className="text-sm font-medium text-white/90"
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.4, delay: 0.5 }}
+        >
           Message (optional)
-        </label>
-        <textarea
+        </motion.label>
+        <motion.textarea
           id="message"
           name="message"
           rows={4}
-          className="w-full px-3 py-2 rounded-md text-gray-800"
+          className="w-full px-4 py-3 rounded-lg text-gray-800 bg-white/95 backdrop-blur-sm border border-white/30 focus:border-white/60 focus:ring-2 focus:ring-white/30 focus:outline-none transition-all duration-300 delay-0 shadow-lg hover:shadow-xl resize-none"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.6 }}
+          whileFocus={{ scale: 1.02 }}
         />
       </div>
-      <button
+      <motion.button
         type="submit"
         disabled={status === "submitting"}
-        className={`w-full bg-white hover:bg-primary-dark text-primary py-2 rounded-md font-medium transition-colors ${
+        className={`group relative w-full bg-white hover:bg-primary-dark text-primary py-3 rounded-lg font-medium transition-all duration-300 delay-0 overflow-hidden shadow-lg hover:shadow-2xl ${
           status === "submitting" ? "opacity-70 cursor-not-allowed" : ""
         }`}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, delay: 0.7 }}
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
       >
-        {status === "submitting" ? "Sending..." : "Send Message"}
-      </button>
+        <span className="relative z-10">
+          {status === "submitting" ? "Sending..." : "Send Message"}
+        </span>
+        {/* Luxury button shine effect */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 delay-0" />
+      </motion.button>
+      
       {/* Toast messages will show for success/error. Optionally keep inline messages: */}
       {status === "error" && (
-        <p className="text-danger text-sm mt-2">{error}</p>
+        <motion.p 
+          className="text-red-200 text-sm mt-2 text-center bg-red-500/20 backdrop-blur-sm px-3 py-2 rounded-lg border border-red-500/30"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3, delay: 0 }}
+        >
+          {error}
+        </motion.p>
       )}
-    </form>
+    </motion.form>
   );
 }
