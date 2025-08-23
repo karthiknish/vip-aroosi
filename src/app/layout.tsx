@@ -85,36 +85,38 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                   left: `${Math.random() * 100}%`,
                   top: `${Math.random() * 100}%`,
                   animationDelay: `${Math.random() * 3}s`,
-                  animationDuration: `${2 + Math.random() * 2}s`
+                  animationDuration: `${2 + Math.random() * 2}s`,
                 }}
               />
             ))}
-            
+
             {/* Luxury shine effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 animate-pulse" 
-                 style={{ animationDuration: '4s' }} />
+            <div
+              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 animate-pulse"
+              style={{ animationDuration: "4s" }}
+            />
           </div>
-          
+
           <div className="max-w-7xl mx-auto px-8 text-center relative z-10">
             <a
               href="/"
               className="group inline-block text-6xl md:text-5xl font-lora font-black tracking-widest transform hover:scale-105 transition-all duration-500"
               style={{
-                letterSpacing: '0.15em'
+                letterSpacing: "0.15em",
               }}
             >
-              <span className="relative text-white drop-shadow-2xl" style={{ textShadow: '0 0 20px rgba(255,255,255,0.8), 0 0 40px rgba(139,92,246,0.6)' }}>
-                AROOSI
+              <span className="relative tracking-normal text-4xl font-serif text-white drop-shadow-2xl">
+                Aroosi
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000 z-30" />
               </span>
-              <span className="relative ml-4 text-2xl md:text-xl font-lora font-bold text-yellow-300 drop-shadow-lg">
+              <span className="relative ml-4 tracking-normal text-xl md:text-md font-lora font-bold text-yellow-300 drop-shadow-lg">
                 VIP
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-yellow-400 to-yellow-200 rounded-full animate-ping" />
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-300 rounded-full" />
+                <div className="absolute -top-2 -right-2 w-3 h-3 bg-gradient-to-r from-yellow-400 to-yellow-200 rounded-full animate-ping" />
+                <div className="absolute -top-2 -right-2 w-3 h-3 bg-yellow-300 rounded-full" />
               </span>
             </a>
           </div>
-          
+
           {/* Bottom luxury border */}
           <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
         </header>
@@ -122,6 +124,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         {/* Offset for fixed header to avoid overlap */}
         <div className="pt-24">{children}</div>
         <ToasterProvider />
+        <footer className="py-4 bg-primary-dark text-white  text-center">
+          Copyright © {new Date().getFullYear()} VIP Aroosi. All rights
+          reserved.{" "}
+        </footer>
       </body>
     </html>
   );
