@@ -290,7 +290,7 @@ export default function Home() {
             Submit your details for a free VIP consultation. Our consultant will
             call you shortly.
           </p>
-          <ContactForm defaultSubject="VIP Aroosi Enquiry" />
+          <ContactForm />
         </div>
       </section>
     </main>
