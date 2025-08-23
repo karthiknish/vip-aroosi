@@ -1,5 +1,6 @@
 import "./globals.css";
 import type { ReactNode } from "react";
+import ToasterProvider from "../components/ToasterProvider";
 import { Nunito_Sans } from "next/font/google";
 
 // Load Nunito Sans from Google Fonts and attach to CSS variable
@@ -82,6 +83,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
         {/* Offset for fixed header to avoid overlap */}
         <div className="pt-14">{children}</div>
+        <ToasterProvider />
       </body>
     </html>
   );

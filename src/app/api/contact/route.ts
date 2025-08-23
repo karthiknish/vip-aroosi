@@ -1,40 +1,45 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
+import { db } from "../../../firebase";
+import { collection, addDoc } from "firebase/firestore";
 
-const AROOSI_CONTACT_URL = process.env.NEXT_PUBLIC_AROOSI_CONTACT_URL;
+function log(...args: any[]) {
+  // Use console.log for server logs; can be replaced with a logger
+  console.log("[Contact API]", ...args);
+}
 
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
   try {
-    const payload = await req.json();
-    // ensure we tag the submission as VIP Aroosi
-    const taggedPayload = {
-      ...payload,
-      subject: (payload?.subject as string | undefined) || "VIP Aroosi Enquiry",
-      source: "vip-aroosi", // extra tag field understood by Aroosi backend (ignored if unknown)
-    };
-
-    if (!AROOSI_CONTACT_URL) {
+    log("Incoming contact form request");
+    const body = await req.json();
+    log("Request body:", body);
+    const { name, email, message } = body;
+    if (!name || !email) {
+      log("Validation failed: missing required fields");
       return NextResponse.json(
-        { error: "Contact endpoint not configured" },
-        { status: 500 }
+        { error: "Missing required fields" },
+        { status: 400 }
       );
     }
-
-    const res = await fetch(AROOSI_CONTACT_URL as string, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(taggedPayload),
+    // Basic email validation
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+      log("Validation failed: invalid email", email);
+      return NextResponse.json(
+        { error: "Invalid email address" },
+        { status: 400 }
+      );
+    }
+    log("Writing to Firestore", { name, email, message });
+    await addDoc(collection(db, "vip-contact"), {
+      name,
+      email,
+      message,
+      createdAt: Date.now(),
     });
-
-    const data = await res.json();
-
-    return NextResponse.json(data, { status: res.status });
-  } catch (e) {
-    console.error("Proxy contact error", e);
-    return NextResponse.json(
-      { error: "Failed to submit contact" },
-      { status: 500 }
-    );
+    log("Contact form submission successful");
+    return NextResponse.json({ success: true });
+  } catch (err) {
+    log("Error submitting contact form:", err);
+    return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
 }

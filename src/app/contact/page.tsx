@@ -13,7 +13,7 @@ export default function ContactPage() {
           Reach out to our VIP concierge team and begin your bespoke matchmaking
           journey.
         </p>
-        <ContactForm defaultSubject="VIP Aroosi Contact" />
+        <ContactForm />
         <a href="/" className="text-primary underline">
           Back to home
         </a>
