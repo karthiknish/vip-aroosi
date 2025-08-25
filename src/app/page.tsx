@@ -3,6 +3,10 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import ContactForm from "../components/ContactForm";
+import FAQ from "../components/FAQ";
+import AroosiEdge from "../components/AroosEdge";
+import PoweredByAroosi from "../components/PoweredByAroosi";
+import EnquiryFormSection from "../components/EnquiryFormSection";
 
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -178,422 +182,92 @@ export default function Home() {
       </section>
 
       {/* Powered By Aroosi */}
-      <section className="py-20 px-4 bg-white relative overflow-hidden">
-        {/* Luxury animated background */}
-        <div className="absolute inset-0">
-          {/* Moving mesh pattern */}
-          <motion.div
-            className="absolute inset-0 opacity-5"
-            style={{
-              backgroundImage: `radial-gradient(circle at 50% 50%, #8b5cf6 2px, transparent 2px)`,
-              backgroundSize: "40px 40px",
-            }}
-            animate={{
-              backgroundPosition: ["0px 0px", "40px 40px", "0px 0px"],
-            }}
-            transition={{
-              duration: 15,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-          />
+  
+      <PoweredByAroosi/>
 
-          {/* Floating luxury elements */}
-          {[...Array(6)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-32 h-32 border-2 border-primary/5 rounded-lg"
-              style={{
-                left: `${10 + Math.random() * 80}%`,
-                top: `${10 + Math.random() * 80}%`,
-                transform: `rotate(${Math.random() * 45}deg)`,
-              }}
-              animate={{
-                rotate: [0, 360],
-                scale: [1, 1.1, 1],
-                opacity: [0.05, 0.15, 0.05],
-              }}
-              transition={{
-                duration: 12 + Math.random() * 6,
-                repeat: Infinity,
-                delay: Math.random() * 3,
-                ease: "easeInOut",
-              }}
-            />
-          ))}
-        </div>
+      {/* How It Works - Styled like Stories */}
+<section className="py-16 px-4 bg-base relative overflow-hidden">
+  {/* Luxury background elements */}
+  <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-purple-50/30 to-blue-50/30" />
+  <div className="absolute top-20 right-20 w-64 h-64 bg-purple-200/20 rounded-full blur-3xl" />
 
-        <div className="absolute inset-0 bg-[url('https://thedigitalglobetrotter.com/wp-content/uploads/2017/09/wp-1505474107833.-1024x576.jpg')] bg-cover bg-center opacity-10 pointer-events-none" />
-
-        {/* Enhanced luxury blur elements */}
+  <div className="max-w-5xl mx-auto text-center space-y-12 relative z-10">
+    <motion.h2
+      className="text-3xl font-extrabold text-primary-dark font-serif"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+    >
+      Your VIP Journey
+    </motion.h2>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {[
+        {
+          title: "Consultation",
+          desc: "Our senior consultant learns about your values, lifestyle & partner expectations in a private call.",
+          icon: "💬",
+        },
+        {
+          title: "Personalised Search",
+          desc: "Leveraging Aroosi's extensive database & elite network, we shortlist truly compatible profiles.",
+          icon: "🔍",
+        },
+        {
+          title: "Curated Introductions",
+          desc: "Meet hand-selected matches at your pace – every interaction arranged with full discretion.",
+          icon: "🤝",
+        },
+      ].map((s, idx) => (
         <motion.div
-          className="pointer-events-none absolute -top-32 -right-32 w-96 h-96 bg-purple-300/40 blur-3xl rounded-full"
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.3, 0.6, 0.3],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div
-          className="pointer-events-none absolute -bottom-32 -left-32 w-80 h-80 bg-blue-300/30 blur-3xl rounded-full"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.2, 0.5, 0.2],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1,
-          }}
-        />
-
-        <div className="relative max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <motion.div
-            className="space-y-6"
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl font-extrabold text-primary-dark font-serif">
-              Powered by <span className="text-primary">Aroosi</span>
-            </h2>
-            <p className="text-lg leading-relaxed text-neutral">
-              VIP Aroosi is an exclusive concierge service built on the proven
-              expertise of <strong>Aroosi</strong> – the number&nbsp;1 Afghan
-              matrimony platform trusted by thousands worldwide. Our
-              award-winning technology, rigorous profile verification, and
-              culture-focused matchmaking have united countless couples in
-              meaningful marriages.
-            </p>
-            <ul className="space-y-3 list-disc list-inside">
-              <li>20+ years of community matchmaking experience</li>
-              <li>Global network of 50,000+ vetted Afghan professionals</li>
-              <li>Dedicated VIP consultants for white-glove service</li>
-              <li>Absolute confidentiality & orchestrated introductions</li>
-            </ul>
-          </motion.div>
-          <motion.div
-            className="w-full h-64 md:h-full rounded-lg overflow-hidden shadow-2xl group"
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true }}
-            whileHover={{ scale: 1.02 }}
-          >
-            <img
-              src="https://thedigitalglobetrotter.com/wp-content/uploads/2017/09/wp-1505474107833.-1024x576.jpg"
-              alt="Aroosi success graph"
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-            />
-          </motion.div>
-        </div>
-      </section>
-
-      {/* How It Works */}
-      <section className="py-20 px-4 bg-base-light relative overflow-hidden">
-        {/* Luxury background blur */}
-        <div className="absolute inset-0 bg-gradient-to-tl from-purple-50/40 to-blue-50/40" />
-        <div className="absolute top-10 left-10 w-80 h-80 bg-purple-200/20 rounded-full blur-3xl" />
-
-        <div className="max-w-5xl mx-auto space-y-12 text-center relative z-10">
-          <motion.h2
-            className="text-5xl font-extrabold text-primary-dark font-serif"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0 }}
-            viewport={{ once: true }}
-          >
-            Your VIP Journey
-          </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Consultation",
-                desc: "Our senior consultant learns about your values, lifestyle & partner expectations in a private call.",
-                icon: "💬",
-              },
-              {
-                title: "Personalised Search",
-                desc: "Leveraging Aroosi's extensive database & elite network, we shortlist truly compatible profiles.",
-                icon: "🔍",
-              },
-              {
-                title: "Curated Introductions",
-                desc: "Meet hand-selected matches at your pace – every interaction arranged with full discretion.",
-                icon: "🤝",
-              },
-            ].map((s, idx) => (
-              <motion.div
-                key={s.title}
-                className="group p-8 border border-base-dark bg-white/90 backdrop-blur-sm rounded-lg shadow-lg hover:shadow-2xl flex flex-col items-center gap-4 cursor-pointer transition-all duration-300 relative overflow-hidden"
-                whileHover={{
-                  scale: 1.05,
-                  y: -8,
-                }}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0 }}
-              >
-                {/* Luxury icon glow */}
-                <div className="relative">
-                  <span className="text-4xl relative z-10">{s.icon}</span>
-                  <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl scale-150 group-hover:scale-200 transition-transform duration-500" />
-                </div>
-
-                <h3 className="text-xl font-semibold text-primary-dark font-serif">
-                  {s.title}
-                </h3>
-                <p className="text-neutral text-sm leading-relaxed">{s.desc}</p>
-
-                {/* Luxury border glow */}
-                <div className="absolute inset-0 rounded-lg border-2 border-transparent bg-gradient-to-r from-primary/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </motion.div>
-            ))}
+          key={s.title}
+          className="group p-6 bg-white/80 backdrop-blur-sm rounded-lg shadow-lg border border-base-dark flex flex-col gap-4 cursor-pointer hover:bg-white transition-all duration-200 ease-out relative overflow-hidden hover:shadow-2xl hover:border-purple-300/30"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          whileHover={{ scale: 1.03, y: -4, rotate: -1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.25 }}
+        >
+          {/* Corner accents (appear on hover) */}
+          <div className="pointer-events-none absolute inset-0">
+            <span className="absolute top-2 left-2 h-4 w-4 rounded-sm bg-gradient-to-br from-purple-300/60 to-primary/40 transform scale-0 group-hover:scale-100 transition-transform duration-200" />
+            <span className="absolute top-2 right-2 h-4 w-4 rounded-sm bg-gradient-to-bl from-purple-300/60 to-primary/40 transform scale-0 group-hover:scale-100 transition-transform duration-200" />
+            <span className="absolute bottom-2 left-2 h-4 w-4 rounded-sm bg-gradient-to-tr from-purple-300/60 to-primary/40 transform scale-0 group-hover:scale-100 transition-transform duration-200" />
+            <span className="absolute bottom-2 right-2 h-4 w-4 rounded-sm bg-gradient-to-tl from-purple-300/60 to-primary/40 transform scale-0 group-hover:scale-100 transition-transform duration-200" />
           </div>
-        </div>
-      </section>
+
+          {/* Bottom glow overlay */}
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-purple-100/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+
+          {/* Icon with glow */}
+          <div className="relative mx-auto">
+            <span className="text-4xl relative z-10">{s.icon}</span>
+            <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl scale-150 group-hover:scale-200 transition-transform duration-500" />
+          </div>
+
+          <h3 className="text-lg font-semibold text-primary-dark font-serif relative z-10">{s.title}</h3>
+          <p className="text-neutral text-sm leading-relaxed relative z-10">{s.desc}</p>
+
+          {/* Underline animation */}
+          <div className="relative z-10 mt-[-4px] h-[2px] w-20 mx-auto origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-200 bg-gradient-to-r from-primary via-purple-500 to-primary rounded-full" />
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
 
       {/* The Aroosi Edge */}
-      <section className="py-20 px-4 bg-base relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.squarespace-cdn.com/content/v1/5c2db4029772aebeba129860/1718695569777-7JMTP88KEOHZTA9BLN1X/JBX53235.jpg')] bg-cover bg-center opacity-10 pointer-events-none" />
-        {/* Enhanced luxury blur elements */}
-        <div className="pointer-events-none absolute -bottom-32 -left-32 w-96 h-96 bg-purple-300/40 blur-3xl rounded-full animate-pulse" />
-        <div
-          className="pointer-events-none absolute -top-32 -right-32 w-80 h-80 bg-blue-300/30 blur-3xl rounded-full animate-pulse"
-          style={{ animationDelay: "1.5s" }}
-        />
+      
+<AroosiEdge/>
 
-        <div className="relative max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <motion.div
-            className="space-y-6"
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0 }}
-          >
-            <h2 className="text-5xl font-bold text-primary-dark font-serif">
-              The Aroosi Edge
-            </h2>
-            <p className="text-lg leading-relaxed text-neutral">
-              Beyond technology, VIP Aroosi blends <strong>heritage</strong>,
-              <strong> expertise</strong>, and <strong>human insight</strong> to
-              create unions destined to thrive. Here's why discerning singles
-              choose us.
-            </p>
-            <ul className="space-y-3 list-disc list-inside">
-              <li>Hand-curated matches reviewed by senior consultants</li>
-              <li>In-depth cultural & family alignment assessments</li>
-              <li>Exclusive invites to private Aroosi networking salons</li>
-              <li>Post-match relationship coaching & support</li>
-            </ul>
-          </motion.div>
-
-          <motion.div
-            className="w-full h-64 md:h-full rounded-lg overflow-hidden shadow-2xl group"
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0 }}
-            whileHover={{ scale: 1.02 }}
-          >
-            <img
-              src="https://images.squarespace-cdn.com/content/v1/5c2db4029772aebeba129860/1718695569777-7JMTP88KEOHZTA9BLN1X/JBX53235.jpg"
-              alt="VIP Aroosi consultancy"
-              className="w-full h-full object-cover transition-transform duration-700 delay-0 group-hover:scale-110"
-            />
-          </motion.div>
-        </div>
-      </section>
 
       {/* FAQ */}
-      <section className="py-16 px-4 bg-white relative overflow-hidden">
-        {/* Luxury animated background */}
-        <div className="absolute inset-0">
-          {/* Animated question mark patterns */}
-          {[...Array(12)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute text-6xl text-primary/5 font-bold select-none pointer-events-none"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                transform: `rotate(${Math.random() * 360}deg)`,
-              }}
-              animate={{
-                rotate: [0, 360],
-                scale: [0.8, 1.2, 0.8],
-                opacity: [0.02, 0.08, 0.02],
-              }}
-              transition={{
-                duration: 20 + Math.random() * 10,
-                repeat: Infinity,
-                delay: Math.random() * 5,
-                ease: "easeInOut",
-              }}
-            >
-              ?
-            </motion.div>
-          ))}
-
-          {/* Floating luxury icons */}
-          {[...Array(5)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-16 h-16 rounded-full border border-primary/10 flex items-center justify-center text-primary/10 text-2xl"
-              style={{
-                left: `${20 + Math.random() * 60}%`,
-                top: `${20 + Math.random() * 60}%`,
-              }}
-              animate={{
-                y: [0, -20, 0],
-                rotate: [0, 180, 360],
-                scale: [1, 1.1, 1],
-                opacity: [0.1, 0.2, 0.1],
-              }}
-              transition={{
-                duration: 8 + Math.random() * 4,
-                repeat: Infinity,
-                delay: Math.random() * 3,
-                ease: "easeInOut",
-              }}
-            >
-              💎
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Luxury background blur */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-50/30 to-blue-50/30" />
-        <motion.div
-          className="absolute top-20 left-20 w-64 h-64 bg-purple-200/20 rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.3, 1],
-            x: [0, 20, 0],
-            y: [0, -20, 0],
-            opacity: [0.2, 0.4, 0.2],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-
-        <div className="max-w-3xl mx-auto space-y-8 relative z-10" id="faq">
-          <motion.h2
-            className="text-3xl font-extrabold font-serif text-center text-primary-dark"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0 }}
-            viewport={{ once: true }}
-          >
-            Frequently Asked Questions
-          </motion.h2>
-          <div className="space-y-4">
-            {[
-              {
-                q: "What makes VIP Aroosi different?",
-                a: "Our bespoke, concierge-style matchmaking leverages a private global network ensuring matches that fit your lifestyle and values.",
-              },
-              {
-                q: "How do I get started?",
-                a: "Simply fill in the enquiry form below and our VIP consultant will contact you for a confidential discussion.",
-              },
-              {
-                q: "Is my data kept private?",
-                a: "Absolutely. Your profile remains 100% confidential and is shared only with hand-selected matches after your approval.",
-              },
-            ].map((item, idx) => (
-              <motion.div
-                key={idx}
-                className="group border border-base-dark rounded-md bg-white/80 backdrop-blur-sm hover:bg-white transition-all duration-300 cursor-pointer overflow-hidden"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-                whileHover={{
-                  scale: 1.01,
-                  boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
-                }}
-              >
-                <div
-                  className="p-4 font-medium cursor-pointer hover:text-primary transition-colors duration-300 flex justify-between items-center"
-                  onClick={() => toggleFaq(idx)}
-                >
-                  <span>{item.q}</span>
-                  <motion.span
-                    animate={{ rotate: openFaq === idx ? 180 : 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="text-primary"
-                  >
-                    ▼
-                  </motion.span>
-                </div>
-                <motion.div
-                  initial={false}
-                  animate={{
-                    height: openFaq === idx ? "auto" : 0,
-                    opacity: openFaq === idx ? 1 : 0,
-                  }}
-                  transition={{ duration: 0.3 }}
-                  className="overflow-hidden"
-                >
-                  <div className="px-4 pb-4 text-sm text-gray-700">
-                    {item.a}
-                  </div>
-                </motion.div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FAQ />
 
       {/* Enquiry Form */}
-      <section
-        id="enquiry"
-        className="py-16 px-4 bg-primary text-white flex flex-col items-center relative overflow-hidden"
-      >
-        {/* Luxury background elements */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary-dark" />
-        <div className="absolute top-10 left-10 w-80 h-80 bg-white/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 right-10 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
-
-        <div className="max-w-lg w-full space-y-6 text-center relative z-10">
-          <motion.h2
-            className="text-5xl font-bold font-serif"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0 }}
-            viewport={{ once: true }}
-          >
-            Get Invited
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
-          >
-            Submit your details for a free VIP consultation. Our consultant will
-            call you shortly.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <ContactForm />
-          </motion.div>
-        </div>
-      </section>
+      
+      <EnquiryFormSection/>
     </main>
   );
 }
