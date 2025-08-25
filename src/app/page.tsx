@@ -81,107 +81,32 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Advantage Cards */}
-      <section className="py-16 px-4 bg-white relative overflow-hidden">
-        {/* Luxury animated background */}
-        <div className="absolute inset-0">
-          {/* Floating geometric shapes */}
-          {[...Array(8)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-20 h-20 border border-primary/10 rounded-full"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-              animate={{
-                x: [0, 30, -30, 0],
-                y: [0, -30, 30, 0],
-                scale: [1, 1.1, 0.9, 1],
-                opacity: [0.1, 0.3, 0.1, 0.1],
-              }}
-              transition={{
-                duration: 8 + Math.random() * 4,
-                repeat: Infinity,
-                delay: Math.random() * 2,
-                ease: "easeInOut",
-              }}
-            />
-          ))}
-
-          {/* Luxury gradient waves */}
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-purple-500/5"
-            animate={{
-              backgroundPosition: ["0% 0%", "100% 100%", "0% 0%"],
-            }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-          />
-        </div>
-
-        {/* Enhanced luxury blur elements */}
-        <motion.div
-          className="absolute top-20 left-10 w-72 h-72 bg-purple-200/20 rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.2, 0.4, 0.2],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div
-          className="absolute bottom-20 right-10 w-96 h-96 bg-blue-200/20 rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.1, 1],
-            opacity: [0.2, 0.3, 0.2],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2,
-          }}
-        />
-
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 text-center relative z-10">
+      {/* Advantage Cards - Lightweight */}
+      <section className="py-12 px-4 bg-white">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
           {[
             { value: "98%", label: "Match Success" },
             { value: "70+", label: "Countries Served" },
             { value: "24h", label: "Concierge Response" },
-          ].map((item, idx) => (
-            <motion.div
+          ].map((item) => (
+            <div
               key={item.label}
-              className="group p-8 rounded-lg border border-base-dark bg-base cursor-pointer backdrop-blur-sm hover:backdrop-blur-md transition-all duration-300 delay-0 relative overflow-hidden"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{
-                scale: 1.05,
-                y: -5,
-                boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
-              }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+              className="group relative p-8 rounded-lg border border-base-dark bg-base cursor-pointer transition-transform duration-150 ease-out hover:scale-[1.05] hover:shadow-xl hover:border-primary/20 hover:bg-white overflow-hidden"
             >
-              {/* Luxury shine effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 delay-0" />
+              {/* Diagonal shine on hover (top-left to bottom-right) */}
+              <div className="pointer-events-none absolute -inset-[40%] rotate-45 -translate-x-full -translate-y-full group-hover:translate-x-full group-hover:translate-y-full bg-gradient-to-r from-transparent via-amber-200/30 to-transparent transition-transform duration-300 ease-linear" />
 
-              <motion.span
-                className="text-3xl md:text-4xl font-bold text-primary block"
-                initial={{ scale: 0.8, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                transition={{ type: "spring", stiffness: 100 }}
-              >
+              {/* Subtle radial highlight */}
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.15),transparent_60%)] opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+
+              {/* Top-edge shimmer */}
+              <div className="pointer-events-none absolute top-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-amber-300/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+
+              <span className="text-3xl md:text-4xl font-bold text-primary block">
                 {item.value}
-              </motion.span>
-              <p className="mt-2 font-medium">{item.label}</p>
-            </motion.div>
+              </span>
+              <p className="mt-2 font-medium text-primary-dark/80 group-hover:text-primary-dark transition-colors duration-150">{item.label}</p>
+            </div>
           ))}
         </div>
       </section>
@@ -222,24 +147,30 @@ export default function Home() {
             ].map((s, idx) => (
               <motion.blockquote
                 key={s.name}
-                className="group p-6 bg-white/80 backdrop-blur-sm rounded-lg shadow-lg border border-base-dark flex flex-col gap-4 cursor-pointer hover:bg-white transition-all duration-300 relative overflow-hidden"
+                className="group p-6 bg-white/80 backdrop-blur-sm rounded-lg shadow-lg border border-base-dark flex flex-col gap-4 cursor-pointer hover:bg-white transition-all duration-200 ease-out relative overflow-hidden hover:shadow-2xl hover:border-purple-300/30"
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{
-                  scale: 1.02,
-                  y: -5,
-                  boxShadow: "0 25px 50px rgba(0,0,0,0.15)",
-                }}
+                whileHover={{ scale: 1.03, y: -4, rotate: -1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0 }}
+                transition={{ duration: 0.25 }}
               >
-                {/* Luxury card shine */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+                {/* Corner accents (appear on hover) */}
+                <div className="pointer-events-none absolute inset-0">
+                  <span className="absolute top-2 left-2 h-4 w-4 rounded-sm bg-gradient-to-br from-purple-300/60 to-primary/40 transform scale-0 group-hover:scale-100 transition-transform duration-200" />
+                  <span className="absolute top-2 right-2 h-4 w-4 rounded-sm bg-gradient-to-bl from-purple-300/60 to-primary/40 transform scale-0 group-hover:scale-100 transition-transform duration-200" />
+                  <span className="absolute bottom-2 left-2 h-4 w-4 rounded-sm bg-gradient-to-tr from-purple-300/60 to-primary/40 transform scale-0 group-hover:scale-100 transition-transform duration-200" />
+                  <span className="absolute bottom-2 right-2 h-4 w-4 rounded-sm bg-gradient-to-tl from-purple-300/60 to-primary/40 transform scale-0 group-hover:scale-100 transition-transform duration-200" />
+                </div>
+
+                {/* Bottom glow overlay */}
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-purple-100/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
 
                 <p className="italic text-sm relative z-10">"{s.quote}"</p>
                 <span className="font-semibold text-primary-dark relative z-10">
                   {s.name}
                 </span>
+                {/* Name underline sweep */}
+                <div className="relative z-10 mt-[-6px] h-[2px] w-20 mx-auto origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-200 bg-gradient-to-r from-primary via-purple-500 to-primary rounded-full" />
               </motion.blockquote>
             ))}
           </div>
