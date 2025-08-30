@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import MovingStrip from "./MovingStrip";
+import PatternBG from "./patterBG";
 
 const Stories = () => {
   const stories = [
@@ -90,70 +91,27 @@ const Stories = () => {
       {/* Background (lowest layer) */}
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-purple-50/30 to-blue-50/30 z-[-20]" />
       <div className="absolute top-20 right-20 w-64 h-64 bg-purple-200/20 rounded-full blur-3xl z-[-20]" />
-
+      {/* below cards above bg */}
+      <div className="absolute top-0 left-0 w-full h-full ">
+        <PatternBG />
+      </div>
       {/* Left Section Fade Mask */}
-      <div
+      {/* <div
         className="absolute left-0 top-0 h-full w-[10%] 
     bg-gradient-to-r from-white via-white/60 to-transparent 
     z-30 pointer-events-none"
-      ></div>
+      ></div> */}
 
       {/* Right Section Fade Mask */}
-      <div
+      {/* <div
         className="absolute right-0 top-0 h-full w-[10%] 
     bg-gradient-to-l from-white via-white/60 to-transparent 
     z-30 pointer-events-none"
-      ></div>
+      ></div> */}
 
-      {/* Diagonal Strips Layer (behind cards but above background) */}
-      <div className="absolute inset-0 flex flex-col justify-between z-0 pointer-events-none">
-        {/* Top Strip */}
-        <div className="flex justify-center">
-          <MovingStrip
-            items={couples}
-            color="#BE185D"
-            rotation={-12} // ulta tilt
-            speed={20}
-            direction="right" // right ko move karegi
-          />
-        </div>
-
-        {/* Middle Strip */}
-        <div className="flex justify-center">
-          <MovingStrip
-            items={couples}
-            color="#BE185D"
-            rotation={-12} // jaisa tha
-            speed={15}
-            direction="left" // left ko move karegi
-          />
-        </div>
-        {/* Middle Strip - 2 */}
-        {/* <div className="flex justify-center h-40">
-          <MovingStrip
-            items={couples}
-            color="#BE185D"
-            rotation={12} // jaisa tha
-            speed={15}
-            direction="right" // left ko move karegi
-          />
-        </div> */}
-
-        {/* Bottom Strip */}
-        <div className="flex justify-center">
-          <MovingStrip
-            items={couples}
-            color="#BE185D"
-            rotation={-12} // ulta tilt
-            speed={18}
-            direction="right" // right ko move karegi
-          />
-        </div>
-      </div>
-
-      {/* Content (cards above strip) */}
+      {/* Content  */}
       <div className="max-w-5xl mx-auto text-center space-y-12 relative z-10">
-        <h2 className="text-3xl font-extrabold text-primary-dark font-serif drop-shadow-[1px_1px_0px_black]">
+        <h2 className="text-3xl font-extrabold text-primary-dark font-serif drop-shadow-[1px_2px_0px_black]">
           Inspiring VIP Aroosi Stories
         </h2>
 
