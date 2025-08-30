@@ -1,9 +1,10 @@
 import { useState } from "react";
+import Image from "next/image"; // If you're using Next.js
 
 export default function FAQ() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  const toggleFaq = (idx : number) => {
+  const toggleFaq = (idx: number) => {
     setOpenFaq(openFaq === idx ? null : idx);
   };
 
@@ -24,39 +25,57 @@ export default function FAQ() {
 
   return (
     <section className="py-16 px-4 bg-white relative overflow-hidden">
-      {/* Background blur (lightweight, no animations) */}
+      {/* Background blur */}
       <div className="absolute inset-0 bg-gradient-to-br from-purple-50/40 to-blue-50/40" />
 
-      <div className="max-w-3xl mx-auto space-y-8 relative z-10" id="faq">
-        <h2 className="text-3xl font-extrabold font-serif text-center text-primary-dark">
-          Frequently Asked Questions
-        </h2>
-        <div className="space-y-4">
-          {faqs.map((item, idx) => (
-            <div
-              key={idx}
-              className="group border border-base-dark rounded-md bg-white/90 backdrop-blur-sm hover:bg-white transition-all duration-200 cursor-pointer overflow-hidden"
-              onClick={() => toggleFaq(idx)}
-            >
-              <div className="p-4 font-medium flex justify-between items-center">
-                <span>{item.q}</span>
-                <span
-                  className={`text-primary transform transition-transform duration-300 ${
-                    openFaq === idx ? "rotate-180" : "rotate-0"
+      <div className="max-w-6xl mx-auto relative z-10 grid md:grid-cols-2 gap-10 items-center">
+        {/* Left side image shifted 20% outside */}
+        <div className="relative -ml-[30%]">
+          <div className="overflow-hidden rounded-xl border-8 border-[#FF3C68] shadow-lg w-[600px]">
+            <Image
+              src="/couple1.jpeg"
+              alt="FAQ Illustration"
+              width={600}
+              height={500}
+              className="w-full h-auto object-cover transform transition-transform duration-500 ease-in-out hover:scale-105"
+            />
+          </div>
+        </div>
+
+        {/* Right side FAQs */}
+        <div className="space-y-8" id="faq">
+          <h2 className="text-3xl font-extrabold text-primary-dark font-serif drop-shadow-[1px_2px_0px_black]">
+            Frequently Asked Questions
+          </h2>
+          <div className="space-y-4">
+            {faqs.map((item, idx) => (
+              <div
+                key={idx}
+                className="group border border-base-dark rounded-md bg-white/90 backdrop-blur-sm hover:bg-white transition-all duration-200 cursor-pointer overflow-hidden"
+                onClick={() => toggleFaq(idx)}
+              >
+                <div className="p-4 font-medium flex justify-between items-center">
+                  <span>{item.q}</span>
+                  <span
+                    className={`text-primary transform transition-transform duration-300 ${
+                      openFaq === idx ? "rotate-180" : "rotate-0"
+                    }`}
+                  >
+                    ▼
+                  </span>
+                </div>
+                <div
+                  className={`px-4 pb-4 text-sm text-gray-700 transition-all duration-300 ease-in-out overflow-hidden ${
+                    openFaq === idx
+                      ? "max-h-40 opacity-100"
+                      : "max-h-0 opacity-0"
                   }`}
                 >
-                  ▼
-                </span>
+                  {item.a}
+                </div>
               </div>
-              <div
-                className={`px-4 pb-4 text-sm text-gray-700 transition-all duration-300 ease-in-out overflow-hidden ${
-                  openFaq === idx ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
-                }`}
-              >
-                {item.a}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

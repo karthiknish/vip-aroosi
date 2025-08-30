@@ -1,16 +1,37 @@
 import React, { useMemo } from "react";
 
 const PatternBG = () => {
-  // Generate hearts once only
   const hearts = useMemo(() => {
-    return [...Array(25)].map((_, i) => {
-      const size = Math.random() * 40 + 20; // heart size (20px – 60px)
-      const left = Math.random() * 100; // random X%
-      const top = Math.random() * 100; // random Y%
-      const rotate = Math.random() * 360; // random rotation
-      return { id: i, size, left, top, rotate };
-    });
-  }, []); // empty deps → only run once
+    const rows = 6; // increased
+    const cols = 6; // increased
+    const total = rows * cols;
+    const items: {
+      id: number;
+      size: number;
+      left: number;
+      top: number;
+      rotate: number;
+    }[] = [];
+
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        const id = r * cols + c;
+        const size = Math.random() * 40 + 20;
+        const rotate = Math.random() * 360;
+
+        // Base position is grid cell center
+        const leftBase = (c + 0.5) * (100 / cols);
+        const topBase = (r + 0.5) * (100 / rows);
+
+        // Add small random offset (so it’s not too rigid)
+        const left = leftBase + (Math.random() * 12 - 6); // ±6%
+        const top = topBase + (Math.random() * 12 - 6); // ±6%
+
+        items.push({ id, size, left, top, rotate });
+      }
+    }
+    return items;
+  }, []);
 
   return (
     <div className="w-full h-screen bg-white relative overflow-hidden">
