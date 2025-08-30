@@ -1,7 +1,3 @@
-dekh md size se neeche hi grid wagera hoga isme uske upar relative se -translate-x krdio
-
-
-
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import PatternBG from "./patterBG";
