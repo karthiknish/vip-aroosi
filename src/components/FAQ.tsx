@@ -1,5 +1,5 @@
-import { useState } from "react";
-import Image from "next/image"; // If you're using Next.js
+import { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 import PatternBG from "./patterBG";
 
 export default function FAQ() {
@@ -34,7 +34,7 @@ export default function FAQ() {
       </div>
 
       <div className="max-w-6xl mx-auto relative z-10 grid md:grid-cols-2 gap-10 items-center">
-        {/* Left side image shifted 20% outside */}
+        {/* Left side image */}
         <div className="relative -ml-[30%]">
           <div className="overflow-hidden rounded-xl border-8 border-[#000] shadow-lg w-[600px]">
             <Image
@@ -54,35 +54,74 @@ export default function FAQ() {
           </h2>
           <div className="space-y-4">
             {faqs.map((item, idx) => (
-              <div
+              <FAQItem
                 key={idx}
-                className="group border border-base-dark rounded-md bg-white/90 backdrop-blur-sm hover:bg-white transition-all duration-200 cursor-pointer overflow-hidden"
-                onClick={() => toggleFaq(idx)}
-              >
-                <div className="p-4 font-medium flex justify-between items-center">
-                  <span>{item.q}</span>
-                  <span
-                    className={`text-primary transform transition-transform duration-300 ${
-                      openFaq === idx ? "rotate-180" : "rotate-0"
-                    }`}
-                  >
-                    ▼
-                  </span>
-                </div>
-                <div
-                  className={`px-4 pb-4 text-sm text-gray-700 transition-all duration-300 ease-in-out overflow-hidden ${
-                    openFaq === idx
-                      ? "max-h-40 opacity-100"
-                      : "max-h-0 opacity-0"
-                  }`}
-                >
-                  {item.a}
-                </div>
-              </div>
+                idx={idx}
+                q={item.q}
+                a={item.a}
+                openFaq={openFaq}
+                toggleFaq={toggleFaq}
+              />
             ))}
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function FAQItem({
+  idx,
+  q,
+  a,
+  openFaq,
+  toggleFaq,
+}: {
+  idx: number;
+  q: string;
+  a: string;
+  openFaq: number | null;
+  toggleFaq: (idx: number) => void;
+}) {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const isOpen = openFaq === idx;
+  const [height, setHeight] = useState("0px");
+
+  useEffect(() => {
+    if (isOpen && contentRef.current) {
+      setHeight(`${contentRef.current.scrollHeight}px`);
+    } else {
+      setHeight("0px");
+    }
+  }, [isOpen]);
+
+  return (
+    <div
+      className="group border border-base-dark rounded-md bg-white/90 backdrop-blur-sm hover:bg-white transition-all duration-200 cursor-pointer overflow-hidden"
+      onClick={() => toggleFaq(idx)}
+    >
+      <div className="p-4 font-medium flex justify-between items-center">
+        <span>{q}</span>
+        <span
+          className={`text-primary transform transition-transform duration-300 ${
+            isOpen ? "rotate-180" : "rotate-0"
+          }`}
+        >
+          ▼
+        </span>
+      </div>
+      <div
+        ref={contentRef}
+        style={{
+          maxHeight: height,
+          transition:
+            "max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease",
+          opacity: isOpen ? 1 : 0,
+        }}
+        className="px-4 pb-4 text-sm text-gray-700 overflow-hidden"
+      >
+        {a}
+      </div>
+    </div>
   );
 }
