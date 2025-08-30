@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import MovingStrip from "./MovingStrip";
 import PatternBG from "./patterBG";
 
 const Stories = () => {
