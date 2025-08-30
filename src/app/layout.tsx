@@ -105,7 +105,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 letterSpacing: "0.15em",
               }}
             >
-              <span className="relative tracking-normal text-4xl font-serif text-white drop-shadow-2xl">
+              <span className="relative tracking-normal text-4xl font-serif text-white drop-shadow-2xl ">
                 Aroosi
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000 z-30" />
               </span>

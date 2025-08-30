@@ -1,15 +1,21 @@
 import { motion } from "framer-motion";
 
-// Floating Dots Component with Glow
+// Floating Dots Component with Glow (more at bottom)
 const FloatingDots = () => {
-  const dots = Array.from({ length: 35 }); // thoda zyada for richness
+  const dots = Array.from({ length: 35 });
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {dots.map((_, i) => {
         const size = 2 + Math.random() * 4;
         const left = `${Math.random() * 100}%`;
-        const top = `${Math.random() * 100}%`;
+
+        // bias: 70% chance neeche half me
+        const top =
+          Math.random() < 0.7
+            ? `${50 + Math.random() * 50}%` // bottom half
+            : `${Math.random() * 100}%`; // anywhere
+
         const duration = 6 + Math.random() * 8;
         const delay = Math.random() * 4;
 
@@ -50,7 +56,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-black/60" />
       <div className="absolute inset-0 backdrop-brightness-75 backdrop-blur-sm" />
 
-      {/* Floating Dots with Glow */}
+      {/* Floating Dots with Glow (bottom biased) */}
       <FloatingDots />
 
       <motion.div
