@@ -8,6 +8,7 @@ import AroosiEdge from "../components/AroosEdge";
 import PoweredByAroosi from "../components/PoweredByAroosi";
 import EnquiryFormSection from "../components/EnquiryFormSection";
 import Hero from "../components/Hero";
+import Stories from "../components/Stories";
 
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -19,7 +20,7 @@ export default function Home() {
   return (
     <main className="w-full overflow-x-hidden text-gray-800 bg-base-light -mt-6">
       {/* Hero */}
-     <Hero />  
+      <Hero />
       {/* Advantage Cards - Lightweight */}
       <section className="py-12 px-4 bg-white">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
@@ -56,70 +57,7 @@ export default function Home() {
       </section>
 
       {/* Stories */}
-      <section className="py-16 px-4 bg-base relative overflow-hidden">
-        {/* Luxury background elements */}
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-purple-50/30 to-blue-50/30" />
-        <div className="absolute top-20 right-20 w-64 h-64 bg-purple-200/20 rounded-full blur-3xl" />
-
-        <div className="max-w-5xl mx-auto text-center space-y-12 relative z-10">
-          <motion.h2
-            className="text-3xl font-extrabold text-primary-dark font-serif"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            Inspiring VIP Aroosi Stories
-          </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Sara & Omar",
-                quote:
-                  "We found each other through the meticulous efforts of the VIP Aroosi team!",
-              },
-              {
-                name: "Leena & Zayd",
-                quote:
-                  "Their personalised approach made all the difference in our journey.",
-              },
-              {
-                name: "Aisha & Faris",
-                quote:
-                  "Truly grateful for the professionalism and discretion throughout.",
-              },
-            ].map((s, idx) => (
-              <motion.blockquote
-                key={s.name}
-                className="group p-6 bg-white/80 backdrop-blur-sm rounded-lg shadow-lg border border-base-dark flex flex-col gap-4 cursor-pointer hover:bg-white transition-all duration-200 ease-out relative overflow-hidden hover:shadow-2xl hover:border-purple-300/30"
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ scale: 1.03, y: -4, rotate: -1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.25 }}
-              >
-                {/* Corner accents (appear on hover) */}
-                <div className="pointer-events-none absolute inset-0">
-                  <span className="absolute top-2 left-2 h-4 w-4 rounded-sm bg-gradient-to-br from-purple-300/60 to-primary/40 transform scale-0 group-hover:scale-100 transition-transform duration-200" />
-                  <span className="absolute top-2 right-2 h-4 w-4 rounded-sm bg-gradient-to-bl from-purple-300/60 to-primary/40 transform scale-0 group-hover:scale-100 transition-transform duration-200" />
-                  <span className="absolute bottom-2 left-2 h-4 w-4 rounded-sm bg-gradient-to-tr from-purple-300/60 to-primary/40 transform scale-0 group-hover:scale-100 transition-transform duration-200" />
-                  <span className="absolute bottom-2 right-2 h-4 w-4 rounded-sm bg-gradient-to-tl from-purple-300/60 to-primary/40 transform scale-0 group-hover:scale-100 transition-transform duration-200" />
-                </div>
-
-                {/* Bottom glow overlay */}
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-purple-100/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
-
-                <p className="italic text-sm relative z-10">"{s.quote}"</p>
-                <span className="font-semibold text-primary-dark relative z-10">
-                  {s.name}
-                </span>
-                {/* Name underline sweep */}
-                <div className="relative z-10 mt-[-6px] h-[2px] w-20 mx-auto origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-200 bg-gradient-to-r from-primary via-purple-500 to-primary rounded-full" />
-              </motion.blockquote>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Stories />
 
       {/* Powered By Aroosi */}
 

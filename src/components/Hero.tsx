@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 // Snowfall Component (lightweight)
 const Snowfall = () => {
-  const snowflakes = Array.from({ length: 50 }); // gentle density, still performant
+  const snowflakes = Array.from({ length: 40 }); // reduced for performance
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -10,21 +10,21 @@ const Snowfall = () => {
         const size = 1 + Math.random() * 2;
         const left = `${Math.random() * 100}%`;
         const delay = Math.random() * 6;
-        const duration = 16 + Math.random() * 16; // slower, relaxed
+        const duration = 10 + Math.random() * 10;
 
         return (
           <motion.div
             key={i}
-            className="absolute rounded-full bg-white/60 blur-[0.5px] will-change-transform"
+            className="absolute rounded-full bg-white/60 will-change-transform"
             style={{
               left,
               width: `${size}px`,
               height: `${size}px`,
             }}
             animate={{
-              y: [0, 550],
-              x: [0, 12, -8, 0],
-              opacity: [0.15, 0.7, 0.25],
+              y: [0, 500],
+              x: [0, Math.random() * 15 - 7, 0],
+              opacity: [0.2, 0.8, 0.3],
             }}
             transition={{
               duration,

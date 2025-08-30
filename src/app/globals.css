@@ -1,19 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Boldonse&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Boldonse&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* basic overrides */
-html,body{margin:0;padding:0;}
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
 
 /* Font CSS variables */
 :root {
-  --font-family-sans: 'Nunito Sans', ui-sans-serif, system-ui, sans-serif;
-  --font-serif: 'Boldonse', ui-serif, serif;
+  --font-family-sans: "Nunito Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Boldonse", ui-serif, serif;
 }
 
 /* Use Boldonse for headings */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-serif);
 }
 
@@ -55,7 +64,8 @@ body {
 
 /* Luxury animations */
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px);
   }
   50% {
@@ -64,7 +74,8 @@ body {
 }
 
 @keyframes pulse-glow {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
   }
   50% {
@@ -96,13 +107,18 @@ body {
 }
 
 .luxury-shimmer::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
   animation: shimmer 2s infinite;
 }
 
@@ -126,25 +142,30 @@ body {
 
 /* Luxury shadows */
 .luxury-shadow {
-  box-shadow: 
-    0 10px 25px -5px rgba(0, 0, 0, 0.1),
-    0 10px 10px -5px rgba(0, 0, 0, 0.04),
-    0 0 0 1px rgba(139, 92, 246, 0.1);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(139, 92, 246, 0.1);
 }
 
 .luxury-shadow-hover {
-  box-shadow: 
-    0 20px 50px -12px rgba(0, 0, 0, 0.25),
+  box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.25),
     0 0 0 1px rgba(139, 92, 246, 0.2);
 }
 
 /* Luxury gradients */
 .luxury-gradient {
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(59, 130, 246, 0.1));
+  background: linear-gradient(
+    135deg,
+    rgba(139, 92, 246, 0.1),
+    rgba(59, 130, 246, 0.1)
+  );
 }
 
 .luxury-gradient-hover {
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(59, 130, 246, 0.2));
+  background: linear-gradient(
+    135deg,
+    rgba(139, 92, 246, 0.2),
+    rgba(59, 130, 246, 0.2)
+  );
 }
 
 /* Luxury borders */
@@ -175,13 +196,18 @@ body {
 }
 
 .luxury-button::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
   transition: left 0.5s ease;
 }
 
@@ -234,13 +260,17 @@ body {
 }
 
 .luxury-section::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(59, 130, 246, 0.05));
+  background: linear-gradient(
+    135deg,
+    rgba(139, 92, 246, 0.05),
+    rgba(59, 130, 246, 0.05)
+  );
   pointer-events: none;
 }
 
@@ -286,13 +316,18 @@ body {
 }
 
 .luxury-loading::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
   animation: shimmer 1.5s infinite;
 }
 
@@ -327,21 +362,39 @@ body {
   .luxury-card {
     backdrop-filter: blur(15px);
   }
-  
+
   .luxury-section::before {
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.03), rgba(59, 130, 246, 0.03));
+    background: linear-gradient(
+      135deg,
+      rgba(139, 92, 246, 0.03),
+      rgba(59, 130, 246, 0.03)
+    );
   }
 }
 
 /* Luxury dark mode support */
 @media (prefers-color-scheme: dark) {
   .luxury-gradient {
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(59, 130, 246, 0.15));
+    background: linear-gradient(
+      135deg,
+      rgba(139, 92, 246, 0.15),
+      rgba(59, 130, 246, 0.15)
+    );
   }
-  
+
   .luxury-card {
     background: rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
 }
 
+@layer utilities {
+  /* Hide scrollbar but keep scrolling */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE & Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
