@@ -129,7 +129,7 @@ const Stories = () => {
           />
         </div>
         {/* Middle Strip - 2 */}
-        <div className="flex justify-center h-40">
+        {/* <div className="flex justify-center h-40">
           <MovingStrip
             items={couples}
             color="#BE185D"
@@ -137,7 +137,7 @@ const Stories = () => {
             speed={15}
             direction="right" // left ko move karegi
           />
-        </div>
+        </div> */}
 
         {/* Bottom Strip */}
         <div className="flex justify-center">
