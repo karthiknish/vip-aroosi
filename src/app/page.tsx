@@ -9,6 +9,7 @@ import PoweredByAroosi from "../components/PoweredByAroosi";
 import EnquiryFormSection from "../components/EnquiryFormSection";
 import Hero from "../components/Hero";
 import Stories from "../components/Stories";
+import AdvantageCard from "../components/AdvantageCard";
 
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -22,39 +23,7 @@ export default function Home() {
       {/* Hero */}
       <Hero />
       {/* Advantage Cards - Lightweight */}
-      <section className="py-12 px-4 bg-white">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-          {[
-            { value: "98%", label: "Match Success" },
-            { value: "70+", label: "Countries Served" },
-            { value: "24h", label: "Concierge Response" },
-          ].map((item) => (
-            <div
-              key={item.label}
-              className="group relative p-8 rounded-lg border border-base-dark bg-base cursor-pointer transition-transform duration-150 ease-out hover:scale-[1.05] hover:shadow-xl hover:border-amber-400/40 hover:bg-white overflow-hidden"
-            >
-              {/* Diagonal shine on hover (top-left to bottom-right) */}
-              <div className="pointer-events-none absolute -inset-[45%] rotate-45 -translate-x-full -translate-y-full group-hover:translate-x-full group-hover:translate-y-full bg-gradient-to-r from-transparent via-amber-300/40 to-transparent opacity-80 mix-blend-screen blur-sm transition-transform duration-500 ease-out" />
-
-              {/* Subtle radial highlight */}
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(255,255,255,0.10),rgba(251,191,36,0.10)_35%,transparent_65%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-              {/* Top-edge shimmer */}
-              <div className="pointer-events-none absolute top-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-amber-200/70 to-transparent opacity-0 group-hover:opacity-100 blur-[0.5px] transition-opacity duration-300" />
-
-              {/* Inset ring glow */}
-              <div className="pointer-events-none absolute inset-0 rounded-lg ring-1 ring-inset ring-amber-300/20 group-hover:ring-amber-400/40 transition-colors duration-300" />
-
-              <span className="text-3xl md:text-4xl font-bold text-primary block">
-                {item.value}
-              </span>
-              <p className="mt-2 font-medium text-primary-dark/80 group-hover:text-primary-dark transition-colors duration-150">
-                {item.label}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
+      <AdvantageCard />
 
       {/* Stories */}
       <Stories />

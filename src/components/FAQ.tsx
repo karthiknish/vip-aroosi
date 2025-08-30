@@ -29,7 +29,7 @@ export default function FAQ() {
       {/* Background blur */}
       <div className="absolute inset-0 bg-gradient-to-br from-purple-50/40 to-blue-50/40" />
       {/* background image */}
-      <div className="absolute inset-0 ">
+      <div className="absolute inset-0 top-0 left-0 pointer-events-none w-screen h-full">
         <PatternBG />
       </div>
 

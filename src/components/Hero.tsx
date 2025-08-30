@@ -1,36 +1,41 @@
 import { motion } from "framer-motion";
 
-// Snowfall Component (lightweight)
-const Snowfall = () => {
-  const snowflakes = Array.from({ length: 40 }); // reduced for performance
+// Floating Dots Component with Glow
+const FloatingDots = () => {
+  const dots = Array.from({ length: 35 }); // thoda zyada for richness
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {snowflakes.map((_, i) => {
-        const size = 1 + Math.random() * 2;
+      {dots.map((_, i) => {
+        const size = 2 + Math.random() * 4;
         const left = `${Math.random() * 100}%`;
-        const delay = Math.random() * 6;
-        const duration = 10 + Math.random() * 10;
+        const top = `${Math.random() * 100}%`;
+        const duration = 6 + Math.random() * 8;
+        const delay = Math.random() * 4;
 
         return (
           <motion.div
             key={i}
-            className="absolute rounded-full bg-white/60 will-change-transform"
+            className="absolute rounded-full bg-white/70 will-change-transform"
             style={{
               left,
+              top,
               width: `${size}px`,
               height: `${size}px`,
+              filter: "blur(2px) brightness(1.3)", // glow effect
+              boxShadow: "0 0 8px rgba(255,255,255,0.7)", // soft outer glow
             }}
             animate={{
-              y: [0, 500],
-              x: [0, Math.random() * 15 - 7, 0],
-              opacity: [0.2, 0.8, 0.3],
+              x: [0, Math.random() * 25 - 12, 0],
+              y: [0, Math.random() * 25 - 12, 0],
+              opacity: [0.3, 0.8, 0.4],
+              scale: [1, 1.3, 1],
             }}
             transition={{
               duration,
               repeat: Infinity,
               delay,
-              ease: "linear",
+              ease: "easeInOut",
             }}
           />
         );
@@ -45,8 +50,8 @@ export default function Hero() {
       <div className="absolute inset-0 bg-black/60" />
       <div className="absolute inset-0 backdrop-brightness-75 backdrop-blur-sm" />
 
-      {/* Lightweight Snowfall */}
-      <Snowfall />
+      {/* Floating Dots with Glow */}
+      <FloatingDots />
 
       <motion.div
         className="relative max-w-3xl space-y-6 z-10"
