@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Image from "next/image"; // If you're using Next.js
+import PatternBG from "./patterBG";
 
 export default function FAQ() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -27,11 +28,15 @@ export default function FAQ() {
     <section className="py-16 px-4 bg-white relative overflow-hidden">
       {/* Background blur */}
       <div className="absolute inset-0 bg-gradient-to-br from-purple-50/40 to-blue-50/40" />
+      {/* background image */}
+      <div className="absolute inset-0 ">
+        <PatternBG />
+      </div>
 
       <div className="max-w-6xl mx-auto relative z-10 grid md:grid-cols-2 gap-10 items-center">
         {/* Left side image shifted 20% outside */}
         <div className="relative -ml-[30%]">
-          <div className="overflow-hidden rounded-xl border-8 border-[#FF3C68] shadow-lg w-[600px]">
+          <div className="overflow-hidden rounded-xl border-8 border-[#000] shadow-lg w-[600px]">
             <Image
               src="/couple1.jpeg"
               alt="FAQ Illustration"
