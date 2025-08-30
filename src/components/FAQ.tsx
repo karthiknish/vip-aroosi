@@ -1,5 +1,9 @@
-import { useState } from "react";
-import Image from "next/image"; // If you're using Next.js
+dekh md size se neeche hi grid wagera hoga isme uske upar relative se -translate-x krdio
+
+
+
+import { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 import PatternBG from "./patterBG";
 
 export default function FAQ() {
@@ -25,7 +29,7 @@ export default function FAQ() {
   ];
 
   return (
-    <section className="py-16 px-4 bg-white relative overflow-hidden">
+    <section className="py-12 px-4 sm:py-16 sm:px-6 lg:px-8 bg-white relative overflow-hidden">
       {/* Background blur */}
       <div className="absolute inset-0 bg-gradient-to-br from-purple-50/40 to-blue-50/40" />
       {/* background image */}
@@ -34,9 +38,9 @@ export default function FAQ() {
       </div>
 
       <div className="max-w-6xl mx-auto relative z-10 grid md:grid-cols-2 gap-10 items-center">
-        {/* Left side image shifted 20% outside */}
-        <div className="relative -ml-[30%]">
-          <div className="overflow-hidden rounded-xl border-8 border-[#000] shadow-lg w-[600px]">
+        {/* Left side image */}
+        <div className="relative flex justify-center md:justify-start">
+          <div className="overflow-hidden rounded-xl border-4 sm:border-6 md:border-8 border-black shadow-lg w-full max-w-[600px]">
             <Image
               src="/couple1.jpeg"
               alt="FAQ Illustration"
@@ -49,40 +53,79 @@ export default function FAQ() {
 
         {/* Right side FAQs */}
         <div className="space-y-8" id="faq">
-          <h2 className="text-3xl font-extrabold text-primary-dark font-serif drop-shadow-[1px_2px_0px_black]">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-primary-dark font-serif drop-shadow-[1px_2px_0px_black]">
             Frequently Asked Questions
           </h2>
           <div className="space-y-4">
             {faqs.map((item, idx) => (
-              <div
+              <FAQItem
                 key={idx}
-                className="group border border-base-dark rounded-md bg-white/90 backdrop-blur-sm hover:bg-white transition-all duration-200 cursor-pointer overflow-hidden"
-                onClick={() => toggleFaq(idx)}
-              >
-                <div className="p-4 font-medium flex justify-between items-center">
-                  <span>{item.q}</span>
-                  <span
-                    className={`text-primary transform transition-transform duration-300 ${
-                      openFaq === idx ? "rotate-180" : "rotate-0"
-                    }`}
-                  >
-                    ▼
-                  </span>
-                </div>
-                <div
-                  className={`px-4 pb-4 text-sm text-gray-700 transition-all duration-300 ease-in-out overflow-hidden ${
-                    openFaq === idx
-                      ? "max-h-40 opacity-100"
-                      : "max-h-0 opacity-0"
-                  }`}
-                >
-                  {item.a}
-                </div>
-              </div>
+                idx={idx}
+                q={item.q}
+                a={item.a}
+                openFaq={openFaq}
+                toggleFaq={toggleFaq}
+              />
             ))}
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function FAQItem({
+  idx,
+  q,
+  a,
+  openFaq,
+  toggleFaq,
+}: {
+  idx: number;
+  q: string;
+  a: string;
+  openFaq: number | null;
+  toggleFaq: (idx: number) => void;
+}) {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const isOpen = openFaq === idx;
+  const [height, setHeight] = useState("0px");
+
+  useEffect(() => {
+    if (isOpen && contentRef.current) {
+      setHeight(`${contentRef.current.scrollHeight}px`);
+    } else {
+      setHeight("0px");
+    }
+  }, [isOpen]);
+
+  return (
+    <div
+      className="group border border-base-dark rounded-md bg-white/90 backdrop-blur-sm hover:bg-white transition-all duration-200 cursor-pointer overflow-hidden"
+      onClick={() => toggleFaq(idx)}
+    >
+      <div className="p-4 font-medium flex justify-between items-center">
+        <span>{q}</span>
+        <span
+          className={`text-primary transform transition-transform duration-300 ${
+            isOpen ? "rotate-180" : "rotate-0"
+          }`}
+        >
+          ▼
+        </span>
+      </div>
+      <div
+        ref={contentRef}
+        style={{
+          maxHeight: height,
+          transition:
+            "max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease",
+          opacity: isOpen ? 1 : 0,
+        }}
+        className="px-4 pb-4 text-sm text-gray-700 overflow-hidden"
+      >
+        {a}
+      </div>
+    </div>
   );
 }
