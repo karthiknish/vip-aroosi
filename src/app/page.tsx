@@ -38,7 +38,7 @@ export default function Home() {
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-purple-50/30 to-blue-50/30" />
         <div className="absolute top-20 right-20 w-64 h-64 bg-purple-200/20 rounded-full blur-3xl" />
 
-        <div className="max-w-5xl mx-auto text-center space-y-12 relative z-10">
+        <div className="max-w-5xl mx-auto text-center space-y-12 relative z-10 py-12">
           <motion.h2
             className="text-3xl font-extrabold text-primary-dark font-serif"
             initial={{ opacity: 0, y: 20 }}
