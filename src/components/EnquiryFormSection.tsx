@@ -1,12 +1,16 @@
 import { motion } from "framer-motion";
 import ContactForm from "./ContactForm";
+import PatternBG2 from "./PatternBG2";
 
 export default function EnquiryFormSection() {
   return (
     <section
       id="enquiry"
-      className="py-16 px-4 bg-primary text-white flex flex-col items-center relative overflow-hidden"
+      className="py-16 px-4 bg-primary text-white flex flex-col items-center relative z-0 overflow-hidden"
     >
+      <div className="absolute inset-0 top-0 left-0 pointer-events-none w-screen h-full z-10">
+        <PatternBG2 />
+      </div>
       {/* Luxury background elements */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary-dark" />
       <div className="absolute top-10 left-10 w-80 h-80 bg-white/10 rounded-full blur-3xl" />
