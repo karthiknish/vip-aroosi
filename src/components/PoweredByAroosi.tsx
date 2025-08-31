@@ -5,7 +5,10 @@ export default function PoweredByAroosi() {
 
   useEffect(() => {
     const section = sectionRef.current as HTMLElement | null;
-    const observers = section?.querySelectorAll<HTMLElement>(".fade-from-left, .fade-from-right") ?? [];
+    const observers =
+      section?.querySelectorAll<HTMLElement>(
+        ".fade-from-left, .fade-from-right"
+      ) ?? [];
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -26,7 +29,7 @@ export default function PoweredByAroosi() {
   return (
     <section
       ref={sectionRef}
-      className="py-20 px-4 bg-white relative overflow-hidden"
+      className="py-28 px-4 bg-white relative overflow-hidden"
     >
       {/* Subtle background */}
       <div className="absolute inset-0 bg-[url('https://thedigitalglobetrotter.com/wp-content/uploads/2017/09/wp-1505474107833.-1024x576.jpg')] bg-cover bg-center opacity-10 pointer-events-none" />
@@ -44,10 +47,9 @@ export default function PoweredByAroosi() {
           <p className="text-lg leading-relaxed text-neutral">
             VIP Aroosi is an exclusive concierge service built on the proven
             expertise of <strong>Aroosi</strong> – the number&nbsp;1 Afghan
-            matrimony platform trusted by thousands worldwide. Our
-            award-winning technology, rigorous profile verification, and
-            culture-focused matchmaking have united countless couples in
-            meaningful marriages.
+            matrimony platform trusted by thousands worldwide. Our award-winning
+            technology, rigorous profile verification, and culture-focused
+            matchmaking have united countless couples in meaningful marriages.
           </p>
           <ul className="space-y-3 list-disc list-inside">
             <li>20+ years of community matchmaking experience</li>

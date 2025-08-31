@@ -21,7 +21,7 @@ export default function AroosiEdge() {
   return (
     <section
       ref={sectionRef}
-      className="py-20 px-4 bg-base relative overflow-hidden"
+      className="py-28 px-4 bg-base relative overflow-hidden"
     >
       {/* Subtle background */}
       <div className="absolute inset-0 bg-[url('https://images.squarespace-cdn.com/content/v1/5c2db4029772aebeba129860/1718695569777-7JMTP88KEOHZTA9BLN1X/JBX53235.jpg')] bg-cover bg-center opacity-10 pointer-events-none" />

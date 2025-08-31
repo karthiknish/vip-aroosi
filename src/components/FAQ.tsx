@@ -25,7 +25,7 @@ export default function FAQ() {
   ];
 
   return (
-    <section className="py-12 px-4 sm:py-16 sm:px-6 lg:px-8 bg-white relative overflow-hidden">
+    <section className="py-20 px-4 sm:py-24 sm:px-6 lg:px-8 bg-white relative overflow-hidden">
       {/* Background blur */}
       <div className="absolute inset-0 bg-gradient-to-br from-purple-50/40 to-blue-50/40" />
       {/* background image */}
