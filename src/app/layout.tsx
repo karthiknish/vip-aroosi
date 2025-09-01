@@ -109,10 +109,17 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 Aroosi
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000 z-30" />
               </span>
-              <span className="relative ml-4 tracking-normal text-xl md:text-md font-lora font-bold text-yellow-300 drop-shadow-lg">
+              <span
+                className="relative ml-4 tracking-wide text-xl md:text-md font-lora font-bold 
+  bg-gradient-to-r from-[#FFD700] via-[#E5C207] to-[#FFB700] 
+  text-transparent bg-clip-text 
+  drop-shadow-[0_0_8px_rgba(229,194,7,0.7)]
+"
+              >
                 VIP
-                <div className="absolute -top-2 -right-2 w-3 h-3 bg-gradient-to-r from-yellow-400 to-yellow-200 rounded-full animate-ping" />
-                <div className="absolute -top-2 -right-2 w-3 h-3 bg-yellow-300 rounded-full" />
+                {/* Glowing Golden Dot */}
+                <div className="absolute -top-2 -right-2 w-3 h-3 rounded-full bg-gradient-to-r from-[#FFD700] to-[#E5C207] animate-ping" />
+                <div className="absolute -top-2 -right-2 w-3 h-3 rounded-full bg-[#E5C207] shadow-[0_0_10px_#E5C207]" />
               </span>
             </a>
           </div>
