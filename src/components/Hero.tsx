@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import FloatingHearts from "./FloatingHearts";
+import FloatingSymbols from "./FloatingSymbols";
 
 // Floating Dots Component with Glow
 const FloatingDots = () => {
@@ -62,6 +64,11 @@ export default function Hero() {
 
       {/* Floating Dots */}
       <FloatingDots />
+
+      {/* Floating Hearts ❤️ */}
+      <FloatingHearts />
+
+      <FloatingSymbols />
 
       <motion.div
         className="relative max-w-3xl space-y-6 z-10"
