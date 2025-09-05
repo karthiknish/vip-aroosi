@@ -37,20 +37,20 @@ const AdvantageCard = () => {
   ];
 
   return (
-    <section className="py-24 px-4 bg-white">
+    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-6xl mx-auto space-y-16">
         {steps.map((step) => (
           <div
             key={step.title}
-            className="grid md:grid-cols-2 gap-8 items-center"
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
           >
             {/* Image Section */}
             <div
               className={
-                step.swap ? "order-2 md:order-2" : "order-1 md:order-1"
+                step.swap ? "order-1 md:order-2" : "order-1 md:order-1"
               }
             >
-              <div className="relative w-full h-[420px] min-h-[320px]">
+              <div className="relative w-full h-[260px] sm:h-[320px] md:h-[420px]">
                 <Image
                   src={step.img}
                   alt={step.title}
@@ -63,16 +63,16 @@ const AdvantageCard = () => {
             {/* Text Section */}
             <div
               className={
-                step.swap ? "order-1 md:order-1" : "order-2 md:order-2"
+                step.swap ? "order-2 md:order-1" : "order-2 md:order-2"
               }
             >
-              <span className="text-4xl font-bold text-indigo-600">
+              <span className="text-3xl sm:text-4xl font-bold text-indigo-600">
                 {step.value}
               </span>
-              <h3 className="mt-2 text-2xl md:text-3xl font-bold text-gray-900">
+              <h3 className="mt-2 text-xl sm:text-2xl md:text-3xl font-bold text-gray-900">
                 {step.title}
               </h3>
-              <ul className="mt-4 space-y-2 text-gray-600">
+              <ul className="mt-4 space-y-2 text-gray-600 text-base sm:text-lg">
                 {step.desc.map((d, idx) => (
                   <li key={idx} className="flex items-start">
                     <span className="mr-2 text-indigo-500">✔</span>

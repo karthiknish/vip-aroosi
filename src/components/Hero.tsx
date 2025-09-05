@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <div className="relative min-h-[80vh] bg-black overflow-hidden mt-12">
+    <div className="relative min-h-screen bg-black overflow-hidden">
       <video
         className="absolute top-0 left-0 w-full h-full object-cover z-0"
         autoPlay
@@ -28,7 +28,7 @@ export default function Hero() {
       />
 
       {/* Hero Content */}
-      <div className="relative z-10 flex items-center justify-center h-[80vh] text-center">
+      <div className="relative z-10 flex items-center justify-center h-screen text-center">
         <div className="max-w-4xl mx-auto px-6">
           <motion.div
             className="space-y-6"

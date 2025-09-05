@@ -59,20 +59,6 @@ const Stories = () => {
     },
   ];
 
-  const couples = [
-    "Amina ♥ Ahmad",
-    "Fatima ♥ Haroon",
-    "Layla ♥ Bilal",
-    "Mariam ♥ Sameer",
-    "Nadia ♥ Zubair",
-    "Roya ♥ Farid",
-    "Shazia ♥ Kareem",
-    "Yasmin ♥ Hamid",
-    "Parisa ♥ Jawad",
-    "Haleema ♥ Imran",
-  ];
-
-  // Start from middle
   const [activeIndex, setActiveIndex] = useState(
     Math.floor(stories.length / 2)
   );
@@ -87,30 +73,16 @@ const Stories = () => {
 
   return (
     <section className="py-14 px-4 bg-base relative overflow-hidden">
-      {/* Background (lowest layer) */}
+      {/* Background */}
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-purple-50/30 to-blue-50/30 z-[-20]" />
       <div className="absolute top-20 right-20 w-64 h-64 bg-purple-200/20 rounded-full blur-3xl z-[-20]" />
-      {/* below cards above bg */}
-      <div className="absolute top-0 left-0 w-full h-full ">
+      <div className="absolute top-0 left-0 w-full h-full">
         <PatternBG />
       </div>
-      {/* Left Section Fade Mask */}
-      {/* <div
-        className="absolute left-0 top-0 h-full w-[10%] 
-    bg-gradient-to-r from-white via-white/60 to-transparent 
-    z-30 pointer-events-none"
-      ></div> */}
 
-      {/* Right Section Fade Mask */}
-      {/* <div
-        className="absolute right-0 top-0 h-full w-[10%] 
-    bg-gradient-to-l from-white via-white/60 to-transparent 
-    z-30 pointer-events-none"
-      ></div> */}
-
-      {/* Content  */}
+      {/* Content */}
       <div className="max-w-5xl mx-auto text-center space-y-12 relative z-10">
-        <h2 className="text-3xl font-extrabold text-primary-dark font-serif drop-shadow-[1px_2px_0px_black]">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl leading-snug font-extrabold text-primary-dark font-serif drop-shadow-[1px_2px_0px_black]">
           Inspiring VIP Aroosi Stories
         </h2>
 
@@ -120,17 +92,14 @@ const Stories = () => {
             onClick={goLeft}
             className="absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow-md rounded-full p-2 z-20"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
 
           {/* Cards Wrapper */}
-          <div className="flex items-center justify-center relative w-full max-w-4xl h-[380px] overflow-hidden">
+          <div className="flex items-center justify-center relative w-full max-w-4xl h-[300px] sm:h-[360px] md:h-[420px] overflow-hidden">
             {stories.map((s, idx) => {
-              // cyclic positioning
               let position =
                 (idx - activeIndex + stories.length) % stories.length;
-
-              // normalize position to -1, 0, 1 for left, center, right
               if (position > stories.length / 2) {
                 position -= stories.length;
               }
@@ -138,26 +107,28 @@ const Stories = () => {
               return (
                 <blockquote
                   key={s.name}
-                  className="absolute w-[340px] h-[340px] p-6 my-20 bg-white/90 backdrop-blur-sm rounded-lg shadow-lg border border-base-dark flex flex-col justify-center gap-4 transition-all duration-500 overflow-hidden"
+                  className="absolute w-[260px] h-[260px] sm:w-[300px] sm:h-[300px] md:w-[340px] md:h-[340px] p-4 sm:p-6 bg-white/90 backdrop-blur-sm rounded-lg shadow-lg border border-base-dark flex flex-col justify-center gap-3 sm:gap-4 transition-all duration-500 overflow-hidden"
                   style={{
-                    transform: `translateX(${position * 60}%) scale(${
+                    transform: `translateX(${position * 55}%) scale(${
                       position === 0 ? 1 : 0.9
                     })`,
                     zIndex: position === 0 ? 10 : 5,
-                    opacity: Math.abs(position) > 1 ? 0 : 1, // only 3 visible
+                    opacity: Math.abs(position) > 1 ? 0 : 1,
                   }}
                 >
-                  {/* Background Image with 20% opacity */}
+                  {/* Background Image */}
                   <img
                     src={s.image}
                     alt={s.name}
                     className="absolute inset-0 w-full h-full object-cover opacity-20"
                   />
 
-                  {/* Overlay text content */}
-                  <div className="relative z-10 flex flex-col gap-4">
-                    <p className="italic text-sm font-bold">"{s.quote}"</p>
-                    <span className="font-bold text-primary-dark">
+                  {/* Overlay text */}
+                  <div className="relative z-10 flex flex-col gap-2 sm:gap-4">
+                    <p className="italic text-xs sm:text-sm md:text-base font-bold">
+                      "{s.quote}"
+                    </p>
+                    <span className="font-bold text-primary-dark text-sm sm:text-base md:text-lg">
                       {s.name}
                     </span>
                   </div>
@@ -171,7 +142,7 @@ const Stories = () => {
             onClick={goRight}
             className="absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow-md rounded-full p-2 z-20"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
         </div>
       </div>
