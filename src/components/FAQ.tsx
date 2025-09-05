@@ -36,7 +36,7 @@ export default function FAQ() {
       <div className="max-w-6xl mx-auto relative z-10 grid md:grid-cols-2 gap-10 items-center">
         {/* Left side image */}
         <div className="relative flex justify-center md:justify-start">
-          <div className="overflow-hidden rounded-xl border-4 sm:border-6 md:border-8 border-[#5B21B6] shadow-lg w-full max-w-[600px]">
+          <div className="overflow-hidden rounded-xl shadow-lg w-full max-w-[600px]">
             <Image
               src="/couple1.jpeg"
               alt="FAQ Illustration"
