@@ -2,51 +2,6 @@
 
 import { ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
-import FloatingHearts from "./FloatingHearts";
-import FloatingSymbols from "./FloatingSymbols";
-
-// Floating Dots Component
-const FloatingDots = () => {
-  const dots = Array.from({ length: 35 });
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {dots.map((_, i) => {
-        const size = 2 + Math.random() * 4;
-        const left = `${Math.random() * 100}%`;
-        const top = `${Math.random() * 100}%`;
-        const duration = 20 + Math.random() * 20;
-        const delay = Math.random() * 10;
-
-        return (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-white/70"
-            style={{
-              left,
-              top,
-              width: `${size}px`,
-              height: `${size}px`,
-              filter: "blur(2px) brightness(1.3)",
-              boxShadow: "0 0 8px rgba(255,255,255,0.7)",
-            }}
-            animate={{
-              x: [0, Math.random() * 12 - 6, 0],
-              y: [0, Math.random() * 12 - 6, 0],
-              opacity: [0.3, 0.7, 0.4],
-              scale: [1, 1.15, 1],
-            }}
-            transition={{
-              duration,
-              repeat: Infinity,
-              delay,
-              ease: "easeInOut",
-            }}
-          />
-        );
-      })}
-    </div>
-  );
-};
 
 export default function Hero() {
   return (
@@ -63,7 +18,8 @@ export default function Hero() {
       </video>
 
       {/* Overlays */}
-      <div className="absolute inset-0 bg-black/30 z-0" />
+      <div className="absolute inset-0 bg-black/65 z-0" />
+
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -72,19 +28,11 @@ export default function Hero() {
         }}
       />
 
-      {/* Floating Animations */}
-      {/* <FloatingDots />
-      <FloatingHearts />
-      <FloatingSymbols /> */}
-
-      {/* Navigation Bar */}
-      {/* <nav className="fixed top-0 left-0 right-0 z-50 bg-black/10 backdrop-blur-sm py-4 px-6"></nav> */}
-
       {/* Hero Content */}
-      <div className="relative z-10 flex items-center h-screen">
-        <div className="max-w-7xl mx-auto px-6">
+      <div className="relative z-10 flex items-center justify-center h-screen text-center">
+        <div className="max-w-4xl mx-auto px-6">
           <motion.div
-            className="max-w-2xl space-y-6"
+            className="space-y-6"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
@@ -99,7 +47,7 @@ export default function Hero() {
             </motion.h1>
 
             <motion.p
-              className="font-sans text-gray-200 text-lg lg:text-xl font-light leading-relaxed max-w-xl"
+              className="font-sans text-gray-200 text-lg lg:text-xl font-light leading-relaxed max-w-2xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
